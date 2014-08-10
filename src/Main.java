@@ -1,3 +1,5 @@
+import logic.Field;
+import logic.ZeroNegativeBoundsException;
 import ui.MainFrame;
 
 /**
@@ -9,5 +11,10 @@ import ui.MainFrame;
 public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
+        try{
+            Field f = new Field(10, 10);
+        }catch (ZeroNegativeBoundsException z){
+            System.out.println(z.getMessage());
+        }
     }
 }
