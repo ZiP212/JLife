@@ -1,3 +1,5 @@
+import ui.MainFrame;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Pasha
@@ -6,8 +8,6 @@
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, world");
-        System.out.println("McDonalds");
-        System.exit(0);
+        MainFrame mainFrame = new MainFrame();
     }
 }
