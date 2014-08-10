@@ -32,10 +32,41 @@ public class Field {
         field[x][y] = !field[x][y];
     }
 
-    public void step(){
+    public void step() throws CellOutOfBounds {
+
         boolean[][] nextStep = new boolean[height][width];
         for (int x = 0; x < height; x++) {
             for (int y = 0; y < width; y++) {
+                int count=0;
+                if(field[x-1][y-1]==true)
+                    count++;
+                if(field[x][y-1]==true)
+                    count++;
+                if(field[x+1][y-1]==true)
+                    count++;
+                if(field[x-1][y]==true)
+                    count++;
+                if(field[x+1][y]==true)
+                    count++;
+                if(field[x-1][y+1]==true)
+                    count++;
+                if(field[x][y+1]==true)
+                    count++;
+                if(field[x+1][y+1]==true)
+                    count++;                     // cчитаем кол-во соседей(хз что будет при выходе за границы, например, для угловых клеток)
+
+                if (field [x][y]==false)       // условие рождения
+                {
+                    if(count==3)
+                        flip(x,y);
+
+                }
+                else                           // условия смерти
+                {
+                     if(count<2||count>3)
+                         flip(x,y);
+
+                }
                 //TODO: add checks
             }
         }
