@@ -25,11 +25,26 @@ public class Field {
         field = new boolean[height][width];
     }
 
-    public void populate(int x, int y) throws CellOutOfBounds{
+    public void flip(int x, int y) throws CellOutOfBounds{
         if(x<0 || y<0 || x==height || y==width){
             throw new CellOutOfBounds("x "+x+"; y "+y);
         }
-        field[x][y] = true;
+        field[x][y] = !field[x][y];
+    }
+
+    public void step(){
+        boolean[][] nextStep = new boolean[height][width];
+        for (int x = 0; x < height; x++) {
+            for (int y = 0; y < width; y++) {
+                //TODO: add checks
+            }
+        }
+
+        for (int x = 0; x < height; x++) {
+            for (int y = 0; y < width; y++) {
+                field[x][y]=nextStep[x][y];
+            }
+        }
     }
 
     public boolean[][] getField() {

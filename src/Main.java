@@ -15,9 +15,10 @@ public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
         try{
-            Field f = new Field(10, 10);
-            for (int i = 0; i < 10; i++) {
-                f.populate(i, i);
+            Field f = new Field(9, 9);
+            for (int i = 0; i < 9; i++) {
+                f.flip(i, i);
+                f.flip(8-i, i);
             }
             for (boolean[] booleans : f.getField()) {
                 System.out.println(Arrays.toString(booleans));
