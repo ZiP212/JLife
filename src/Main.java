@@ -1,6 +1,9 @@
+import logic.CellOutOfBounds;
 import logic.Field;
 import logic.ZeroNegativeBoundsException;
 import ui.MainFrame;
+
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,8 +16,17 @@ public class Main {
         MainFrame mainFrame = new MainFrame();
         try{
             Field f = new Field(10, 10);
+            for (int i = 0; i < 10; i++) {
+                f.populate(i, i);
+            }
+            for (boolean[] booleans : f.getField()) {
+                System.out.println(Arrays.toString(booleans));
+            }
         }catch (ZeroNegativeBoundsException z){
             System.out.println(z.getMessage());
+        }
+        catch (CellOutOfBounds c){
+            System.out.println(c.getMessage());
         }
     }
 }
