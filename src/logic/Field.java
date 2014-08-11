@@ -82,6 +82,7 @@ public class Field {
                     if (count < 2 || count > 3) {
                         nextStep[x][y] = false;
                     }
+                    else nextStep[x][y] = true;
 
                 }
             }
