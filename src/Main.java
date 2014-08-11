@@ -15,19 +15,50 @@ public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
         try{
-            Field f = new Field(9, 9);
-            for (int i = 0; i < 9; i++) {
-                f.flip(i, i);
-                f.flip(8-i, i);
-            }
-            for (boolean[] booleans : f.getField()) {
-                System.out.println(Arrays.toString(booleans));
-            }
+            Field f = new Field(5, 5);
+            f.flip(0, 0);
+            f.flip(0, 2);
+            f.flip(1, 1);
+            f.flip(1, 2);
+            f.flip(2, 1);
+            printBool(f.getField());
+            System.out.println("step");
+            f.step();
+            printBool(f.getField());
+//            System.out.println("step");
+//            f.step();
+//            for (boolean[] booleans : f.getField()) {
+//                System.out.println(Arrays.toString(booleans));
+//            }
+//            System.out.println("step");
+//            f.step();
+//            for (boolean[] booleans : f.getField()) {
+//                System.out.println(Arrays.toString(booleans));
+//            }
+//            System.out.println("step");
+//            f.step();
+//            for (boolean[] booleans : f.getField()) {
+//                System.out.println(Arrays.toString(booleans));
+//            }
         }catch (ZeroNegativeBoundsException z){
             System.out.println(z.getMessage());
         }
         catch (CellOutOfBounds c){
             System.out.println(c.getMessage());
         }
+    }
+
+    public static void printBool(boolean[][] arr){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if(arr[i][j]){
+                    System.out.print("+");
+                }else{
+                    System.out.print("0");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
