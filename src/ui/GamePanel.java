@@ -15,9 +15,9 @@ import java.awt.event.ActionListener;
  * Time: 16:23
  */
 public class GamePanel extends JPanel {
-    private int fieldWidth = 5;
-    private int fieldHeight = 5;
-    private int cellSize = 10;
+    private int fieldWidth = 25;
+    private int fieldHeight = 25;
+    private int cellSize = 20;
     private int borderPx = 5;
     private int interval = 1;
     private Field f;
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel {
             f.flip(1, 1);
             f.flip(1, 2);
             f.flip(2, 1);
-            Timer t = new Timer(interval*1000, new ActionListener() {
+            Timer t = new Timer(interval*100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     f.step();
@@ -73,4 +73,20 @@ public class GamePanel extends JPanel {
         }
     }
 
+
+    public int getFieldWidth() {
+        return fieldWidth;
+    }
+
+    public int getFieldHeight() {
+        return fieldHeight;
+    }
+
+    public int getCellSize() {
+        return cellSize;
+    }
+
+    public int getBorderPx() {
+        return borderPx;
+    }
 }

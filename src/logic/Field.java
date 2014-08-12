@@ -61,7 +61,6 @@ public class Field {
                 if (x < width - 1 && y < height - 1 && field[x + 1][y + 1]) {
                     count++;
                 }
-                System.out.print(count);
 
                 if (field[x][y] == false)       // условие рождения
                 {
