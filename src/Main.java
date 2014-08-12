@@ -1,9 +1,4 @@
-import logic.CellOutOfBounds;
-import logic.Field;
-import logic.ZeroNegativeBoundsException;
 import ui.MainFrame;
-
-import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.

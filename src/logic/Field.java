@@ -25,14 +25,11 @@ public class Field {
         field = new boolean[height][width];
     }
 
-    public void flip(int x, int y) throws CellOutOfBounds {
-        if (x < 0 || y < 0 || x == width || y == height) {
-            throw new CellOutOfBounds("x " + x + "; y " + y);
-        }
+    public void flip(int x, int y){
         field[x][y] = !field[x][y];
     }
 
-    public void step() throws CellOutOfBounds {
+    public void step() {
         long startTime = System.nanoTime();
         boolean[][] nextStep = new boolean[width][height];
         for (int x = 0; x < width; x++) {
@@ -98,6 +95,3 @@ public class Field {
         return field;
     }
 }
-
-//TODO: разобраться где X, где Y. X - вертикаль, Y - горизонталь. Внести соответствующие изменения.
-//TODO: в main.java запилить годный вывод массива и начать отладку
