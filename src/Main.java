@@ -13,7 +13,6 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame();
         try{
             Field f = new Field(5, 5);
             f.flip(0, 0);

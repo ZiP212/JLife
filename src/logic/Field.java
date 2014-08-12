@@ -3,6 +3,7 @@ package logic;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -81,8 +82,9 @@ public class Field {
                 {
                     if (count < 2 || count > 3) {
                         nextStep[x][y] = false;
+                    }else{
+                        nextStep[x][y] = true;
                     }
-                    else nextStep[x][y] = true;
 
                 }
             }
