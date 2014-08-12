@@ -25,6 +25,9 @@ public class Main {
             System.out.println("step");
             f.step();
             printBool(f.getField());
+            f.step();
+            MainFrame m = new MainFrame();
+
 //            System.out.println("step");
 //            f.step();
 //            for (boolean[] booleans : f.getField()) {
