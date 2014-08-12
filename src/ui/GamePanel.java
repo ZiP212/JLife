@@ -29,8 +29,8 @@ public class GamePanel extends JPanel {
     GamePanel(){
         try{
             f = new Field(fieldHeight, fieldWidth);
-            setSize(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
-            setMinimumSize(getSize());
+
+            setPreferredSize(new Dimension(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx));
             f.flip(0, 0);
             f.flip(0, 2);
             f.flip(1, 1);

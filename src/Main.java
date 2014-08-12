@@ -11,6 +11,7 @@ public class Main {
         MainFrame m = new MainFrame();
         m.setVisible(true);
         m.repaint();
+
     }
 
     public static void printBool(boolean[][] arr) {

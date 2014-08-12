@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,8 +13,11 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setTitle("JLife");
         GamePanel gp = new GamePanel();
-        add(gp);
-        setSize(100, 100);
+
+        getContentPane().add(gp, BorderLayout.CENTER);
+        pack();
+
+       // setSize(700, 700);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }
