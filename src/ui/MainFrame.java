@@ -12,12 +12,13 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     public MainFrame() {
         setTitle("JLife");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         GamePanel gp = new GamePanel();
+        GameMenu gm = new GameMenu();
 
         getContentPane().add(gp, BorderLayout.CENTER);
+        getContentPane().add(gm, BorderLayout.NORTH);
         pack();
 
-       // setSize(700, 700);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

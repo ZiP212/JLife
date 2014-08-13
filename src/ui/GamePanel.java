@@ -89,4 +89,6 @@ public class GamePanel extends JPanel {
     public int getBorderPx() {
         return borderPx;
     }
+
+    public Field getField() {return f;}
 }
