@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,8 +21,9 @@ public class GamePanel extends JPanel {
     private int fieldHeight = 25;
     private int cellSize = 20;
     private int borderPx = 5;
-    private int interval = 1;
+    private int interval = 3;
     private Field f;
+    private Timer t;
 
     //TODO:кнопка запуска и остановки симуляции
     //TODO:подстройка размеров MainFrame под размеры поля (LayoutManager, метод pack())
@@ -36,7 +39,7 @@ public class GamePanel extends JPanel {
             f.flip(1, 1);
             f.flip(1, 2);
             f.flip(2, 1);
-            Timer t = new Timer(interval*100, new ActionListener() {
+            t = new Timer(interval*100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     f.step();
@@ -44,6 +47,23 @@ public class GamePanel extends JPanel {
                 }
             });
             t.start();
+
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    super.mouseClicked(e);
+
+                    t.stop();
+                    int x = e.getX()/(borderPx+cellSize);
+                    int y = e.getY()/(borderPx+cellSize);
+                    f.flip(x, y);
+                    repaint();
+                    if(x==1 && y==1){
+                        t.start();
+                    }
+
+                }
+            });
         }catch (ZeroNegativeBoundsException z){
             z.printStackTrace();
         }
