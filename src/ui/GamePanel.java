@@ -29,66 +29,64 @@ public class GamePanel extends JPanel {
     //TODO:подстройка размеров MainFrame под размеры поля (LayoutManager, метод pack())
     //TODO:реакция на клики.
 
-    GamePanel(){
-        try{
+    GamePanel() {
+        try {
             f = new Field(fieldHeight, fieldWidth);
 
             setPreferredSize(new Dimension(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx));
-            f.flip(0, 0);
-            f.flip(0, 2);
-            f.flip(1, 1);
-            f.flip(1, 2);
-            f.flip(2, 1);
-            t = new Timer(interval*100, new ActionListener() {
+//            f.flip(0, 0);
+//            f.flip(0, 2);
+//            f.flip(1, 1);
+//            f.flip(1, 2);
+//            f.flip(2, 1);
+            t = new Timer(interval * 100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     f.step();
                     repaint();
                 }
             });
-            t.start();
-
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
 
                     t.stop();
-                    int x = e.getX()/(borderPx+cellSize);
-                    int y = e.getY()/(borderPx+cellSize);
+                    int x = e.getX() / (borderPx + cellSize);
+                    int y = e.getY() / (borderPx + cellSize);
                     f.flip(x, y);
                     repaint();
-                    if(x==1 && y==1){
+                    if (x == 1 && y == 1) {
                         t.start();
                     }
 
                 }
             });
-        }catch (ZeroNegativeBoundsException z){
+        } catch (ZeroNegativeBoundsException z) {
             z.printStackTrace();
         }
     }
 
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
         boolean[][] data = f.getField();
-        for (int i = 0; i <=fieldHeight; i++) {
+        for (int i = 0; i <= fieldHeight; i++) {
             g.fillRect(0, i * (borderPx + cellSize), fieldWidth * (cellSize + borderPx) + borderPx, borderPx);
         }
-        for (int i = 0; i <=fieldWidth; i++) {
-            g.fillRect(i*(borderPx+cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
+        for (int i = 0; i <= fieldWidth; i++) {
+            g.fillRect(i * (borderPx + cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
         }
-        for (int x = 0; x <fieldHeight; x++) {
+        for (int x = 0; x < fieldHeight; x++) {
             for (int y = 0; y < fieldWidth; y++) {
-                if(data[x][y]){
+                if (data[x][y]) {
                     g.setColor(Color.GREEN);
-                }else{
+                } else {
                     g.setColor(Color.GRAY);
                 }
-                g.fillRect(x*(borderPx+cellSize)+borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
+                g.fillRect(x * (borderPx + cellSize) + borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
             }
         }
     }
@@ -98,11 +96,11 @@ public class GamePanel extends JPanel {
         return fieldWidth;
     }
 
-    public int getFieldHeight() {
+    public int getFieldHeight(){
         return fieldHeight;
     }
 
-    public int getCellSize() {
+    public int getCellSize(){
         return cellSize;
     }
 
@@ -110,5 +108,11 @@ public class GamePanel extends JPanel {
         return borderPx;
     }
 
-    public Field getField() {return f;}
+    public void timerStart(){
+        t.start();
+    }
+
+    public void timerStop(){
+        t.stop();
+    }
 }

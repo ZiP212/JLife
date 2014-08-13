@@ -1,49 +1,26 @@
 package ui;
 
-import logic.Field;
-import logic.ZeroNegativeBoundsException;
-
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by Сережа on 13.08.2014.
  */
-public class GameMenu extends JMenuBar
-{
-    GameMenu()
-    {
-        JMenuItem Start = new  JMenuItem("Start");
-        JMenuItem Stop = new JMenuItem("Stop");
+public class GameMenu extends JMenuBar {
+    private JMenuItem start;
+    private JMenuItem stop;
 
-       // Start.setPreferredSize(new Dimension(40, 20));
-        //Stop.setPreferredSize(new Dimension(40, 20));
+    GameMenu() {
+        start = new JMenuItem("Start");
+        stop = new JMenuItem("Stop");
+        add(start);
+        add(stop);
+    }
 
-        Start.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+    public JMenuItem getStart() {
+        return start;
+    }
 
-
-            }
-
-        });
-
-
-
-        Stop.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
-
-
-        add(Start);
-        add(Stop);
-
+    public JMenuItem getStop() {
+        return stop;
     }
 }
