@@ -56,37 +56,37 @@ public class GamePanel extends JPanel {
                     int y = e.getY() / (borderPx + cellSize);
                     f.flip(x, y);
                     repaint();
-                    if (x == 1 && y == 1) {
+                    if(x==1 && y==1){
                         t.start();
                     }
 
                 }
             });
-        } catch (ZeroNegativeBoundsException z) {
+        }catch (ZeroNegativeBoundsException z){
             z.printStackTrace();
         }
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g){
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
         boolean[][] data = f.getField();
-        for (int i = 0; i <= fieldHeight; i++) {
+        for (int i = 0; i <=fieldHeight; i++) {
             g.fillRect(0, i * (borderPx + cellSize), fieldWidth * (cellSize + borderPx) + borderPx, borderPx);
         }
-        for (int i = 0; i <= fieldWidth; i++) {
-            g.fillRect(i * (borderPx + cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
+        for (int i = 0; i <=fieldWidth; i++) {
+            g.fillRect(i*(borderPx+cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
         }
-        for (int x = 0; x < fieldHeight; x++) {
+        for (int x = 0; x <fieldHeight; x++) {
             for (int y = 0; y < fieldWidth; y++) {
-                if (data[x][y]) {
+                if(data[x][y]){
                     g.setColor(Color.GREEN);
-                } else {
+                }else{
                     g.setColor(Color.GRAY);
                 }
-                g.fillRect(x * (borderPx + cellSize) + borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
+                g.fillRect(x*(borderPx+cellSize)+borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
             }
         }
     }
@@ -96,11 +96,11 @@ public class GamePanel extends JPanel {
         return fieldWidth;
     }
 
-    public int getFieldHeight(){
+    public int getFieldHeight() {
         return fieldHeight;
     }
 
-    public int getCellSize(){
+    public int getCellSize() {
         return cellSize;
     }
 
