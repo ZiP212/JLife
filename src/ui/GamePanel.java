@@ -115,4 +115,12 @@ public class GamePanel extends JPanel {
     public void timerStop(){
         t.stop();
     }
+
+    public void clearField(){
+        try {
+            f = new Field(fieldHeight, fieldWidth);
+        } catch (ZeroNegativeBoundsException e) {
+            e.printStackTrace();
+        }
+    }
 }
