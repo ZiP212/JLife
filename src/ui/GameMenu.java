@@ -9,6 +9,7 @@ public class GameMenu extends JMenuBar {
     private JMenuItem start;
     private JMenuItem stop;
     private JMenuItem options;
+    private JMenuItem clear;
 
 
     GameMenu() {
@@ -24,6 +25,7 @@ public class GameMenu extends JMenuBar {
         JMenu help = new JMenu("Help");
         JMenuItem about = new JMenuItem("About");
         game.add(start);
+        game.add(clear);
         game.add(stop);
         help.add(about);
         add(game);
@@ -31,6 +33,7 @@ public class GameMenu extends JMenuBar {
         add(save);
         add(optionsMenu);
         add(help);
+
     }
 
     public JMenuItem getStart() {
@@ -38,12 +41,14 @@ public class GameMenu extends JMenuBar {
     }
 
     public JMenuItem getStop() {
-
-
         return stop;
     }
 
     public JMenuItem getOptions() {
         return options;
+    }
+
+    public JMenuItem getClear() {
+        return clear;
     }
 }

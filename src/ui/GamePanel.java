@@ -24,10 +24,8 @@ public class GamePanel extends JPanel {
     private int interval = 3;
     private Field f;
     private Timer t;
+    private int turnNumber = 0;
 
-    //TODO:кнопка запуска и остановки симуляции
-    //TODO:подстройка размеров MainFrame под размеры поля (LayoutManager, метод pack())
-    //TODO:реакция на клики.
 
     GamePanel() {
         try {
@@ -43,6 +41,7 @@ public class GamePanel extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     f.step();
+                    turnNumber++;
                     repaint();
                 }
             });
@@ -56,37 +55,37 @@ public class GamePanel extends JPanel {
                     int y = e.getY() / (borderPx + cellSize);
                     f.flip(x, y);
                     repaint();
-                    if(x==1 && y==1){
+                    if (x == 1 && y == 1) {
                         t.start();
                     }
 
                 }
             });
-        }catch (ZeroNegativeBoundsException z){
+        } catch (ZeroNegativeBoundsException z) {
             z.printStackTrace();
         }
     }
 
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         g.setColor(Color.BLACK);
         boolean[][] data = f.getField();
-        for (int i = 0; i <=fieldHeight; i++) {
+        for (int i = 0; i <= fieldHeight; i++) {
             g.fillRect(0, i * (borderPx + cellSize), fieldWidth * (cellSize + borderPx) + borderPx, borderPx);
         }
-        for (int i = 0; i <=fieldWidth; i++) {
-            g.fillRect(i*(borderPx+cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
+        for (int i = 0; i <= fieldWidth; i++) {
+            g.fillRect(i * (borderPx + cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
         }
-        for (int x = 0; x <fieldHeight; x++) {
+        for (int x = 0; x < fieldHeight; x++) {
             for (int y = 0; y < fieldWidth; y++) {
-                if(data[x][y]){
+                if (data[x][y]) {
                     g.setColor(Color.GREEN);
-                }else{
+                } else {
                     g.setColor(Color.GRAY);
                 }
-                g.fillRect(x*(borderPx+cellSize)+borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
+                g.fillRect(x * (borderPx + cellSize) + borderPx, y * (borderPx + cellSize) + borderPx, cellSize, cellSize);
             }
         }
     }
@@ -108,17 +107,27 @@ public class GamePanel extends JPanel {
         return borderPx;
     }
 
-    public void timerStart(){
+    public void timerStart() {
         t.start();
     }
 
-    public void timerStop(){
+    public void timerStop() {
         t.stop();
     }
 
-    public void clearField(){
+    public int getTurnNumber() {
+        return turnNumber;
+    }
+
+    public int getInterval() {
+        return interval;
+    }
+
+    public void clearField() {
         try {
             f = new Field(fieldHeight, fieldWidth);
+            turnNumber=0;
+            repaint();
         } catch (ZeroNegativeBoundsException e) {
             e.printStackTrace();
         }
