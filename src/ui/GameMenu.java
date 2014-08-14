@@ -8,6 +8,7 @@ import javax.swing.*;
 public class GameMenu extends JMenuBar {
     private JMenuItem start;
     private JMenuItem stop;
+    private JMenuItem clear;
 
 
     GameMenu() {
@@ -15,12 +16,14 @@ public class GameMenu extends JMenuBar {
         JMenu game = new JMenu("Game");
         start = new JMenuItem("Start");
         stop = new JMenuItem("Stop");
+        clear = new JMenuItem("Clear");
         JMenu options= new JMenu("Options");
         JMenu load = new JMenu("Load");
         JMenu save = new JMenu("Save");
         JMenu help = new JMenu("Help");
         JMenuItem about = new JMenuItem("About");
         game.add(start);
+        game.add(clear);
         game.add(stop);
         help.add(about);
         add(game);
@@ -37,5 +40,9 @@ public class GameMenu extends JMenuBar {
 
     public JMenuItem getStop() {
         return stop;
+    }
+
+    public JMenuItem getClear() {
+        return clear;
     }
 }

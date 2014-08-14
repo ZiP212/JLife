@@ -13,11 +13,13 @@ import java.awt.event.ActionListener;
  */
 public class MainFrame extends JFrame {
     private GamePanel gp;
+    private JLabel gs;
 
     public MainFrame() {
         setTitle("JLife");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
         gp = new GamePanel();
         GameMenu gm = new GameMenu();
         gm.getStart().addActionListener(new ActionListener() {
@@ -34,9 +36,34 @@ public class MainFrame extends JFrame {
             }
         });
 
+        gm.getClear().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gp.clearField();
+            }
+        });
+
+        gs = new JLabel();
+        gs.setPreferredSize(new Dimension(100, 16));
+
+        Timer t = new Timer(100 * gp.getInterval(), new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                renewLabel();
+
+            }
+        });
+        t.start();
+
+
         getContentPane().add(gp, BorderLayout.CENTER);
         getContentPane().add(gm, BorderLayout.NORTH);
+        getContentPane().add(gs, BorderLayout.SOUTH);
         pack();
 
+    }
+
+    public void renewLabel() {
+        this.gs.setText("Turn: " + gp.getTurnNumber());
     }
 }
