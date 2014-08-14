@@ -26,8 +26,7 @@ public class GamePanel extends JPanel {
     private Timer t;
     private int turnNumber = 0;
 
-
-    GamePanel() {
+    public GamePanel(int fieldWidth, int fieldHeight) {
         try {
             f = new Field(fieldHeight, fieldWidth);
 
@@ -64,6 +63,12 @@ public class GamePanel extends JPanel {
         } catch (ZeroNegativeBoundsException z) {
             z.printStackTrace();
         }
+    }
+
+
+    GamePanel() {
+        super();
+        this(fieldWidth, fieldHeight);
     }
 
     @Override

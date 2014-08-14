@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        gp = new GamePanel();
+        createField();
         GameMenu gm = new GameMenu();
         gm.getStart().addActionListener(new ActionListener() {
             @Override
@@ -40,6 +40,15 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gp.clearField();
+            }
+        });
+
+        gm.getOptions().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OptionsDialog dialog = new OptionsDialog();
+                dialog.pack();
+                dialog.setVisible(true);
             }
         });
 
@@ -65,5 +74,16 @@ public class MainFrame extends JFrame {
 
     public void renewLabel() {
         this.gs.setText("Turn: " + gp.getTurnNumber());
+    }
+
+    public void createField(int width, int height)
+    {
+        gp = new GamePanel(width, height);
+
+    }
+
+    public void createField()
+    {
+        gp = new GamePanel();
     }
 }

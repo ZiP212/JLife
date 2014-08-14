@@ -17,6 +17,7 @@ public class GameMenu extends JMenuBar {
         JMenu game = new JMenu("Game");
         start = new JMenuItem("Start");
         stop = new JMenuItem("Stop");
+        clear = new JMenuItem("Clear");
         JMenu optionsMenu = new JMenu("Options");
         options = new JMenuItem("Options");
         optionsMenu.add(options);
