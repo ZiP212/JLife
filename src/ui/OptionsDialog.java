@@ -9,8 +9,10 @@ public class OptionsDialog extends JDialog {
     private JButton buttonCancel;
     private JTextField fieldWidth;
     private JTextField fieldHeight;
+    private MainFrame parent;
 
-    public OptionsDialog() {
+    public OptionsDialog(MainFrame parent) {
+        this.parent = parent;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -61,6 +63,7 @@ public class OptionsDialog extends JDialog {
      {
          return;
      }
+        parent.resizeField(a, b);
         dispose();
     }
 

@@ -26,16 +26,10 @@ public class GamePanel extends JPanel {
     private Timer t;
     private int turnNumber = 0;
 
-    public GamePanel(int fieldWidth, int fieldHeight) {
+    GamePanel() {
         try {
             f = new Field(fieldHeight, fieldWidth);
-
             setPreferredSize(new Dimension(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx));
-//            f.flip(0, 0);
-//            f.flip(0, 2);
-//            f.flip(1, 1);
-//            f.flip(1, 2);
-//            f.flip(2, 1);
             t = new Timer(interval * 100, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -63,12 +57,6 @@ public class GamePanel extends JPanel {
         } catch (ZeroNegativeBoundsException z) {
             z.printStackTrace();
         }
-    }
-
-
-    GamePanel() {
-        super();
-        this(fieldWidth, fieldHeight);
     }
 
     @Override
@@ -130,6 +118,18 @@ public class GamePanel extends JPanel {
 
     public void clearField() {
         try {
+            f = new Field(fieldHeight, fieldWidth);
+            turnNumber=0;
+            repaint();
+        } catch (ZeroNegativeBoundsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resizeField(int fieldHeight, int fieldWidth) {
+        try {
+            this.fieldHeight = fieldHeight;
+            this.fieldWidth = fieldWidth;
             f = new Field(fieldHeight, fieldWidth);
             turnNumber=0;
             repaint();

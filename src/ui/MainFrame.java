@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +22,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        createField();
+        gp = new GamePanel();
         GameMenu gm = new GameMenu();
         gm.getStart().addActionListener(new ActionListener() {
             @Override
@@ -46,9 +48,7 @@ public class MainFrame extends JFrame {
         gm.getOptions().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                OptionsDialog dialog = new OptionsDialog();
-                dialog.pack();
-                dialog.setVisible(true);
+                callOptions();
             }
         });
 
@@ -64,26 +64,25 @@ public class MainFrame extends JFrame {
         });
         t.start();
 
-
         getContentPane().add(gp, BorderLayout.CENTER);
         getContentPane().add(gm, BorderLayout.NORTH);
         getContentPane().add(gs, BorderLayout.SOUTH);
         pack();
-
     }
 
     public void renewLabel() {
         this.gs.setText("Turn: " + gp.getTurnNumber());
     }
 
-    public void createField(int width, int height)
+    public void resizeField(int width, int height)
     {
-        gp = new GamePanel(width, height);
-
+        gp.resizeField(width, height);
+        gp.repaint();
     }
 
-    public void createField()
-    {
-        gp = new GamePanel();
+    public void callOptions(){
+        OptionsDialog dialog = new OptionsDialog(this);
+        dialog.pack();
+        dialog.setVisible(true);
     }
 }
