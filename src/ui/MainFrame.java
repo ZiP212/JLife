@@ -78,6 +78,7 @@ public class MainFrame extends JFrame {
     {
         gp.resizeField(width, height);
         gp.repaint();
+        pack();
     }
 
     public void callOptions(){

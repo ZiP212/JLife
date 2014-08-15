@@ -35,6 +35,7 @@ public class GameMenu extends JMenuBar {
         add(optionsMenu);
         add(help);
 
+
     }
 
     public JMenuItem getStart() {

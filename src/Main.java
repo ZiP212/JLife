@@ -12,6 +12,7 @@ public class Main {
         m.setVisible(true);
         m.repaint();
 
+
     }
 
     public static void printBool(boolean[][] arr) {

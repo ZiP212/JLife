@@ -119,6 +119,7 @@ public class GamePanel extends JPanel {
     public void clearField() {
         try {
             f = new Field(fieldHeight, fieldWidth);
+            t.stop();
             turnNumber=0;
             repaint();
         } catch (ZeroNegativeBoundsException e) {
@@ -131,6 +132,7 @@ public class GamePanel extends JPanel {
             this.fieldHeight = fieldHeight;
             this.fieldWidth = fieldWidth;
             f = new Field(fieldHeight, fieldWidth);
+            setPreferredSize(new Dimension(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx));
             turnNumber=0;
             repaint();
         } catch (ZeroNegativeBoundsException e) {
