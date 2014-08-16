@@ -21,7 +21,7 @@ public class GamePanel extends JPanel {
     private int fieldHeight = 25;
     private int cellSize = 20;
     private int borderPx = 5;
-    private int interval = 3;
+    private int interval = 3;  //!
     private Field f;
     private Timer t;
     private int turnNumber = 0;

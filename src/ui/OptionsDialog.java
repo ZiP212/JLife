@@ -9,6 +9,8 @@ public class OptionsDialog extends JDialog {
     private JButton buttonCancel;
     private JTextField fieldWidth;
     private JTextField fieldHeight;
+    private JSlider width;
+    private JSlider height;
     private MainFrame parent;
 
     public OptionsDialog(MainFrame parent) {
@@ -46,17 +48,9 @@ public class OptionsDialog extends JDialog {
     }
 
     private void onOK() {
-        int a=0;
-        int b=0;
-      try
-        {
-            a = Integer.parseInt(fieldWidth.getText());
-            b = Integer.parseInt(fieldHeight.getText());
-        }
-        catch(NumberFormatException e)
-        {
-            return;
-        }
+        int a=width.getValue();
+        int b=height.getValue();
+
 
 
      if(a<=0||b<=0)
