@@ -51,16 +51,7 @@ public class OptionsDialog extends JDialog {
     }
 
     private void onOK() {
-        int wdt=width.getValue();
-        int hgt=height.getValue();
-        int brdr=borderSize.getValue();
-        int clsz=cellSize.getValue();
-        int intr=interval.getValue();
-
-        parent.changeBorder(brdr);
-        parent.changeCellSize(clsz);
-        parent.changeInterval(intr);
-        parent.resizeField(hgt, wdt);
+        parent.resizeField(height.getValue(), width.getValue(), borderSize.getValue(), cellSize.getValue(), interval.getValue());
         dispose();
     }
 

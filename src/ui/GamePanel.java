@@ -117,7 +117,7 @@ public class GamePanel extends JPanel {
         try {
             f = new Field(fieldHeight, fieldWidth);
             t.stop();
-            turnNumber=0;
+            turnNumber = 0;
             repaint();
         } catch (ZeroNegativeBoundsException e) {
             e.printStackTrace();
@@ -130,7 +130,7 @@ public class GamePanel extends JPanel {
             this.fieldWidth = fieldWidth;
             f = new Field(fieldHeight, fieldWidth);
             setPreferredSize(new Dimension(fieldWidth * (cellSize + borderPx) + borderPx, fieldHeight * (cellSize + borderPx) + borderPx));
-            turnNumber=0;
+            turnNumber = 0;
             repaint();
         } catch (ZeroNegativeBoundsException e) {
             e.printStackTrace();
@@ -146,6 +146,7 @@ public class GamePanel extends JPanel {
     }
 
     public void setInterval(int interval) {
-        this.interval = interval;
+        t.stop();
+        t.setDelay(interval * 100);
     }
 }
