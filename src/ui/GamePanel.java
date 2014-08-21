@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
                     t.stop();
                     int x = e.getX() / (borderPx + cellSize);
                     int y = e.getY() / (borderPx + cellSize);
-                    f.flip(x, y);
+                    f.flip(y, x);
                     repaint();
 
                 }
@@ -68,9 +68,9 @@ public class GamePanel extends JPanel {
         for (int i = 0; i <= fieldWidth; i++) {
             g.fillRect(i * (borderPx + cellSize), 0, borderPx, fieldHeight * (cellSize + borderPx) + borderPx);
         }
-        for (int x = 0; x < fieldHeight; x++) {
-            for (int y = 0; y < fieldWidth; y++) {
-                if (data[x][y]) {
+        for (int y = 0; y < fieldHeight; y++) {
+            for (int x = 0; x < fieldWidth; x++) {
+                if (data[y][x]) {
                     g.setColor(Color.GREEN);
                 } else {
                     g.setColor(Color.GRAY);
