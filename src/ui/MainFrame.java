@@ -82,9 +82,9 @@ public class MainFrame extends JFrame {
         this.gs.setText("Turn: " + gp.getTurnNumber());
     }
 
-    public void resizeField(int width, int height)
+    public void resizeField(int height, int width)
     {
-        gp.resizeField(width, height);
+        gp.resizeField(height, width);
         gp.repaint();
         pack();
     }

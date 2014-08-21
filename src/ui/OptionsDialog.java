@@ -48,16 +48,9 @@ public class OptionsDialog extends JDialog {
     }
 
     private void onOK() {
-        int a=width.getValue();
-        int b=height.getValue();
-
-
-
-     if(a<=0||b<=0)
-     {
-         return;
-     }
-        parent.resizeField(a, b);
+        int wdt=width.getValue();
+        int hgt=height.getValue();
+        parent.resizeField(hgt, wdt);
         dispose();
     }
 
