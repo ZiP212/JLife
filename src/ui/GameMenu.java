@@ -10,6 +10,7 @@ public class GameMenu extends JMenuBar {
     private JMenuItem stop;
     private JMenuItem options;
     private JMenuItem clear;
+    private JMenuItem exit;
 
 
     GameMenu() {
@@ -25,9 +26,11 @@ public class GameMenu extends JMenuBar {
         JMenu save = new JMenu("Save");
         JMenu help = new JMenu("Help");
         JMenuItem about = new JMenuItem("About");
+        exit = new JMenuItem("Exit");
         game.add(start);
         game.add(clear);
         game.add(stop);
+        game.add(exit);
         help.add(about);
         add(game);
         add(load);
@@ -53,4 +56,9 @@ public class GameMenu extends JMenuBar {
     public JMenuItem getClear() {
         return clear;
     }
+
+    public JMenuItem getExit() {
+        return exit;
+    }
 }
+//TODO  20-24, exit.

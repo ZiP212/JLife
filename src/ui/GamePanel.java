@@ -48,9 +48,6 @@ public class GamePanel extends JPanel {
                     int y = e.getY() / (borderPx + cellSize);
                     f.flip(x, y);
                     repaint();
-                    if (x == 1 && y == 1) {
-                        t.start();
-                    }
 
                 }
             });

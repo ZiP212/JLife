@@ -52,6 +52,14 @@ public class MainFrame extends JFrame {
             }
         });
 
+        gm.getExit().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+
         gs = new JLabel();
         gs.setPreferredSize(new Dimension(100, 16));
 
