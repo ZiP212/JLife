@@ -25,55 +25,54 @@ public class Field {
         field = new boolean[height][width];
     }
 
-    public void flip(int x, int y){
-        field[x][y] = !field[x][y];
+    public void flip(int y, int x){
+        field[y][x] = !field[y][x];
     }
 
     public void step() {
-        long startTime = System.nanoTime();
-        boolean[][] nextStep = new boolean[width][height];
-        for (int x = 0; x < width; x++) {
+        boolean[][] nextStep = new boolean[height][width];
+        for (int y = 0; y < height; y++) {
             System.out.println();
-            for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 int count = 0;
 
-                if (x > 0 && y > 0 && field[x - 1][y - 1]) {
+                if (y > 0 && x > 0 && field[y - 1][x - 1]) {
                     count++;
                 }
-                if (y > 0 && field[x][y - 1]) {
+                if (x > 0 && field[y][x - 1]) {
                     count++;
                 }
-                if (x < (width - 1) && y > 0 && field[x + 1][y - 1]) {
+                if (y < (height - 1) && x > 0 && field[y + 1][x - 1]) {
                     count++;
                 }
-                if (x > 0 && field[x - 1][y]) {
+                if (y > 0 && field[y - 1][x]) {
                     count++;
                 }
-                if (x < width - 1 && field[x + 1][y]) {
+                if (y < height - 1 && field[y + 1][x]) {
                     count++;
                 }
-                if (x > 0 && y < height - 1 && field[x - 1][y + 1]) {
+                if (y > 0 && x < width - 1 && field[y - 1][x + 1]) {
                     count++;
                 }
-                if (y < height - 1 && field[x][y + 1]) {
+                if (x < width - 1 && field[y][x + 1]) {
                     count++;
                 }
-                if (x < width - 1 && y < height - 1 && field[x + 1][y + 1]) {
+                if (y < height - 1 && x < width - 1 && field[y + 1][x + 1]) {
                     count++;
                 }
 
-                if (field[x][y] == false)       // условие рождения
+                if (!field[y][x])       // условие рождения
                 {
                     if (count == 3) {
-                        nextStep[x][y] = true;
+                        nextStep[y][x] = true;
                     }
 
                 } else                           // условия смерти
                 {
                     if (count < 2 || count > 3) {
-                        nextStep[x][y] = false;
+                        nextStep[y][x] = false;
                     }else{
-                        nextStep[x][y] = true;
+                        nextStep[y][x] = true;
                     }
 
                 }
@@ -82,12 +81,9 @@ public class Field {
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                field[x][y] = nextStep[x][y];
+                field[y][x] = nextStep[y][x];
             }
         }
-        long endTime = System.nanoTime();
-        System.out.println();
-        System.out.println((startTime - endTime) / 1000000 + "ms");
     }
 
     public boolean[][] getField() {
