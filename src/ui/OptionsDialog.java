@@ -11,6 +11,9 @@ public class OptionsDialog extends JDialog {
     private JTextField fieldHeight;
     private JSlider width;
     private JSlider height;
+    private JSlider cellSize;
+    private JSlider borderSize;
+    private JSlider slider1;
     private MainFrame parent;
 
     public OptionsDialog(MainFrame parent) {
