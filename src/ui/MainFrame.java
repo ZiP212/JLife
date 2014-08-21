@@ -92,7 +92,7 @@ public class MainFrame extends JFrame {
 
 
     public void callOptions() {
-        OptionsDialog dialog = new OptionsDialog(this);
+        OptionsDialog dialog = new OptionsDialog(this, gp.getFieldHeight(), gp.getFieldWidth(), gp.getBorderPx(), gp.getCellSize(), gp.getInterval() );
         dialog.pack();
         dialog.setVisible(true);
     }

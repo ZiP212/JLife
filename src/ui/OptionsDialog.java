@@ -7,8 +7,6 @@ public class OptionsDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField fieldWidth;
-    private JTextField fieldHeight;
     private JSlider width;
     private JSlider height;
     private JSlider cellSize;
@@ -16,11 +14,18 @@ public class OptionsDialog extends JDialog {
     private JSlider interval;
     private MainFrame parent;
 
-    public OptionsDialog(MainFrame parent) {
+    public OptionsDialog(MainFrame parent, int height, int width, int borderSize, int cellSize, int interval) {
+
+        setTitle("Options");
         this.parent = parent;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        this.height.setValue(height);
+        this.width.setValue(width);
+        this.borderSize.setValue(borderSize);
+        this.cellSize.setValue(cellSize);
+        this.interval.setValue(interval);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
