@@ -136,4 +136,16 @@ public class GamePanel extends JPanel {
             e.printStackTrace();
         }
     }
+
+    public void setCellSize(int cellSize) {
+        this.cellSize = cellSize;
+    }
+
+    public void setBorderPx(int borderPx) {
+        this.borderPx = borderPx;
+    }
+
+    public void setInterval(int interval) {
+        this.interval = interval;
+    }
 }

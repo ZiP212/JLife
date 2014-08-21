@@ -82,14 +82,30 @@ public class MainFrame extends JFrame {
         this.gs.setText("Turn: " + gp.getTurnNumber());
     }
 
-    public void resizeField(int height, int width)
-    {
+    public void resizeField(int height, int width) {
         gp.resizeField(height, width);
         gp.repaint();
         pack();
     }
 
-    public void callOptions(){
+    public void changeBorder(int borderPx) {
+        gp.setBorderPx(borderPx);
+        gp.repaint();
+        pack();
+    }
+
+    public void changeCellSize(int cellSize) {
+        gp.setCellSize(cellSize);
+        gp.repaint();
+        pack();
+    }
+
+    public void changeInterval(int interval) {
+        gp.setInterval(interval);
+        pack();
+    }
+
+    public void callOptions() {
         OptionsDialog dialog = new OptionsDialog(this);
         dialog.pack();
         dialog.setVisible(true);

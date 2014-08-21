@@ -13,7 +13,7 @@ public class OptionsDialog extends JDialog {
     private JSlider height;
     private JSlider cellSize;
     private JSlider borderSize;
-    private JSlider slider1;
+    private JSlider interval;
     private MainFrame parent;
 
     public OptionsDialog(MainFrame parent) {
@@ -53,6 +53,13 @@ public class OptionsDialog extends JDialog {
     private void onOK() {
         int wdt=width.getValue();
         int hgt=height.getValue();
+        int brdr=borderSize.getValue();
+        int clsz=cellSize.getValue();
+        int intr=interval.getValue();
+
+        parent.changeBorder(brdr);
+        parent.changeCellSize(clsz);
+        parent.changeInterval(intr);
         parent.resizeField(hgt, wdt);
         dispose();
     }
